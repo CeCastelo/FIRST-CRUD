@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:ui="sap.ui"
+    >
+    <Dialog title="{/NewOrEdit}" afterClose="onAfterClose" class="sapUiSizeCompact" contentWidth="30%">
+        <Panel id="itemPanel" expanded="true" width="100%">
+            <f:SimpleForm id="fragmentForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                <f:content>
+                    <Label text="{i18n>column_id}" labelFor="IDfrag" />
+                    <Input id="IDfrag" type="Number" value="{form>/ID}" required="true" enabled="false"/>
+                    <Label text="{i18n>column_name}" labelFor="Namefrag" />
+                    <Input id="Namefrag" type="Text" value="{form>/Name}" required="true"  />
+                    <Label text="{i18n>column_address}" labelFor="Addressfrag" />
+                    <Input id="Addressfrag" type="Text" value="{form>/Address}" required="true" />
+                    <Label text="{i18n>column_CPF}" labelFor="CPFfrag" />
+                    <Input id="CPFfrag" type="Number" value="{form>/CPF}" required="true" />
+                    <Label text="{i18n>column_turno}" labelFor="turnofrag" />
+                    <ComboBox xmlns="sap.m" id="turnofrag" required="true" value="{form>/Turno}" selectedKey="{form>/Turno}">
+                        <items>
+                             <core:Item xmlns:core="sap.ui.core" key="Manha" 
+                                text="Manha"  id="item1"/>
+                             <core:Item xmlns:core="sap.ui.core" key="Tarde" 
+                                text="Tarde" id="item2"/>
+                             <core:Item xmlns:core="sap.ui.core" key="Noite" 
+                                text="Noite" id="item3"/>
+                        </items>
+                    </ComboBox>
+                    <Label text="{i18n>column_date}" labelFor="Datafrag" />
+                    <DatePicker id="Datafrag" required="true" displayFormat="dd/MM/yyyy" value="{form>/Date}"   />
+                    <!-- <Input id="Datafrag" type="Date" value="{form>/Date}" required="true"  /> -->
+                    <Label text="{i18n>column_status}" labelFor="AtivoCombo" />
+                    <ComboBox xmlns="sap.m" id="AtivoCombo" required="true" value="{form>/Ativo}" selectedKey="{form>/Ativo}">
+                        <items>
+                             <core:Item xmlns:core="sap.ui.core" key="Sim" 
+                                text="Sim"  />
+                             <core:Item xmlns:core="sap.ui.core" key="Não" 
+                                text="Não" />
+                        </items>
+                    </ComboBox>          
+
+                </f:content>
+            </f:SimpleForm>
+        </Panel>
+        <buttons>
+            <Button text="{i18n>bt_save}" type="Accept" icon="sap-icon://accept" press="onSave" visible="true" />
+            <Button text="{i18n>bt_cancel}" type="Reject" icon="sap-icon://decline" press="onCancelEdit" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

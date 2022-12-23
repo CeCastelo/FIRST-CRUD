@@ -1,0 +1,115 @@
+<mvc:View 
+    controllerName="crudteste.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:c="sap.suite.ui.commons"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:layout="sap.ui.layout"
+    xmlns:t="sap.ui.table" class="sapUiSizeCompact">
+    <App id="app">
+        <f:DynamicPage id="interface-sap-cadastro-recipe-status" headerExpanded="{/headerExpanded}" showFooter="true">
+            <!-- DynamicPage Title -->
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Title id="title" text="{i18n>tit_app}" />
+                    </f:heading>
+                    <f:actions>
+                        <ToolbarSpacer/>
+                        <Image src="img/poyry.png" width="130px" />
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+            <!-- DynamicPage Header -->
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                    <f:content>
+                        <Toolbar id="tb_buttons">
+                            <Button xmlns="sap.m" text= "{i18n>bt_update}" icon="sap-icon://refresh" press="onReload" id="bt_reload" type="Emphasized" />
+                            
+                            <ToolbarSpacer/>
+                            <SearchField liveChange="filterGlobally" width="500px" placeholder="Pesquisar"/>
+                            <!-- <Button xmlns="sap.m" text="{i18n>bt_edit}" icon="sap-icon://edit" press="onPressEdit" type="Emphasized" class="sapUiSmallMargin"/>
+                            <Button id="bt_delete" xmlns="sap.m" text="{i18n>bt_delete}" icon="sap-icon://delete" press="onPressDelete"  type="Reject" class="sapUiSmallMargin"/> -->
+                            <ToolbarSpacer/>
+                        </Toolbar>
+                    </f:content>
+                </f:DynamicPageHeader>
+            </f:header>
+            <!-- DynamicPage Content -->
+            <f:content>
+                <t:Table id="jobs_table" rowHeight="Auto" rows="{/Jobs}" rowActionCount="2" alternateRowColors="true" selectionMode="SingleToggle" selectionBehavior="Row" visibleRowCountMode="Auto">
+                    <!-- <t:extension>
+                        <OverflowToolbar>
+                            <ToolbarSpacer/>
+                            <SearchField placeholder="Filtrar..." value="{ui>/globalFilter}" width="15rem" liveChange="filterGlobally" showSearchButton="false" />
+                            <Button id="exportConsumedBatches" text="{i18n>bt_export_excel}" icon="sap-icon://excel-attachment" press="onExport" enabled="{/enableExport}" />
+                        </OverflowToolbar>
+                    </t:extension> -->
+                    
+                    <t:columns>
+                        <t:Column id="ID" width="10%" autoResizable="true" defaultFilterOperator="Contains" filterProperty="ID" sortProperty="ID" hAlign="Center" visible="true">
+                            <Label text="{i18n>column_id}"/>
+                            <t:template>
+                                <Text text="{ID}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="Name" width="" autoResizable="true" defaultFilterOperator="Contains" filterProperty="Name" sortProperty="Name" hAlign="Center">
+                            <Label text="{i18n>column_name}"/>
+                            <t:template>
+                                <Text text="{Name}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="Address" autoResizable="true" defaultFilterOperator="Contains" filterProperty="Address" sortProperty="Address" hAlign="Begin" visible="true">
+                            <Label text="{i18n>column_address}"/>
+                            <t:template>
+                                <Text text="{Address}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="CPF" width="15%" autoResizable="true" defaultFilterOperator="Contains" filterProperty="CPF" sortProperty="CPF" hAlign="Center" visible="true">
+                            <Label text="{i18n>column_CPF}"/>
+                            <t:template>
+                                <Text text="{CPF}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="Turno" width="10%" autoResizable="true" defaultFilterOperator="Contains" filterProperty="Turno" sortProperty="Turno" hAlign="Center" visible="true">
+                            <Label text="{i18n>column_turno}"/>
+                            <t:template>
+                                <Text text="{Turno}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="Date" width="10%" autoResizable="true" defaultFilterOperator="Contains" filterProperty="Date" sortProperty="Date" hAlign="Center" visible="true">
+                            <Label text="{i18n>column_date}"/>
+                            <t:template>
+                                <Text text="{Date}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column id="Ativo" width="10%" autoResizable="true" defaultFilterOperator="Contains" filterProperty="Status" sortProperty="Status" hAlign="Center" visible="true">
+                            <Label text="{i18n>column_status}"/>
+                            <t:template>
+                              <Text text="{Ativo}"/>
+                            </t:template>
+                        </t:Column>
+                        
+                    </t:columns>
+                    <t:rowActionTemplate>
+                        <t:RowAction>
+                            <t:items>
+                                <t:RowActionItem text="Editar" type="Custom" icon="sap-icon://edit" press="onEdit" class="sapUiSmallMarginEnd" />
+                                <t:RowActionItem text="Deletar" type="Delete" icon="sap-icon://delete" press="onDelete" />
+                            </t:items>
+                        </t:RowAction>
+                    </t:rowActionTemplate>
+                </t:Table>
+            </f:content>
+            <f:footer>
+                <OverflowToolbar visible="{/isRoleEdit}">
+                    <ToolbarSpacer/>
+                    <Button xmlns="sap.m" text= "{i18n>bt_new}" icon="sap-icon://add-document" press="onPressNew"  type="Emphasized" class="sapUiSmallMargin" />
+                </OverflowToolbar>
+            </f:footer>
+        </f:DynamicPage>
+    </App>
+</mvc:View>

@@ -1,0 +1,14 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+
+<Dialog title="Deseja deletar esse item?" afterClose="onAfterClose" class="sapUiSizeCompact" contentWidth="10%" >
+    
+    <buttons>
+    <Button text="Deletar" width="100px" enabled="true"  textDirection="Inherit" type="Reject" press="onDeleteFrag" />
+    <Button text="Cancelar" width="100px" enabled="true"  textDirection="Inherit" type="Default" press="onCancelFrag"/>    
+    </buttons>
+  
+</Dialog>
+</c:FragmentDefinition>
