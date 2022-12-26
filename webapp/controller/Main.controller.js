@@ -74,6 +74,7 @@ sap.ui.define(
         Lastrecord = oJobs[oJobs.length - 1];
         lastID = (parseFloat(Lastrecord.ID) + 1).toString();
 
+        this.SaveMode = "N";
         this.onCreateEditDialog("N", false, TableId);
         this.oModel.setProperty("/ID", lastID);
       },
@@ -143,8 +144,11 @@ sap.ui.define(
         if (!isValid) {
         } else {
           oData = this.oDialog.getModel("form").getData(); // Os dados do fragment são passados para a variavel
-
-          oTable.push(oData);
+          if (this.SaveMode == "N") {
+            oTable.push(oData);
+          } else {
+            oTable[this.selectRow] = oData;
+          }
           this.oModel.setProperty("/Jobs", oTable);
 
           this.oDialog.close();

@@ -26,6 +26,9 @@
             <f:header>
                 <f:DynamicPageHeader pinnable="true">
                     <f:content>
+                    
+                        
+                    
                         <Toolbar id="tb_buttons">
                             <Button xmlns="sap.m" text= "{i18n>bt_update}" icon="sap-icon://refresh" press="onReload" id="bt_reload" type="Emphasized" />
                             
@@ -35,11 +38,13 @@
                             <Button id="bt_delete" xmlns="sap.m" text="{i18n>bt_delete}" icon="sap-icon://delete" press="onPressDelete"  type="Reject" class="sapUiSmallMargin"/> -->
                             <ToolbarSpacer/>
                         </Toolbar>
+                        
                     </f:content>
                 </f:DynamicPageHeader>
             </f:header>
             <!-- DynamicPage Content -->
             <f:content>
+            <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" headerText="{i18n>ppl_table}">
                 <t:Table id="jobs_table" rowHeight="Auto" rows="{/Jobs}" rowActionCount="2" alternateRowColors="true" selectionMode="SingleToggle" selectionBehavior="Row" visibleRowCountMode="Auto">
                     <!-- <t:extension>
                         <OverflowToolbar>
@@ -103,6 +108,7 @@
                         </t:RowAction>
                     </t:rowActionTemplate>
                 </t:Table>
+                </Panel>
             </f:content>
             <f:footer>
                 <OverflowToolbar visible="{/isRoleEdit}">
